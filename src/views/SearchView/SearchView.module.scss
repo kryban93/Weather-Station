@@ -22,9 +22,12 @@
 }
 
 .input {
+  box-sizing: border-box;
   border: none;
   border-radius: 5px 0 0 5px;
   margin: 1px;
+  padding: 2px;
+  outline: none;
 }
 
 .btn {
@@ -33,4 +36,5 @@
   cursor: pointer;
   border-radius: 0 5px 5px 0;
   margin: 1px;
+  padding: 2px;
 }
