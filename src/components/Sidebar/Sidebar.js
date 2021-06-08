@@ -9,8 +9,9 @@ const Sidebar = () => {
     const data = await fetchCitiesList();
   };
   return (
-    <nav>
-      <input />
+    <nav className={style.nav}>
+      <input className={style.input} />
+      <button className={style.btn}>search</button>
     </nav>
   );
 };

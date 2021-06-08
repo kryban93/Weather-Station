@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Loader from '../components/Loader/Loader';
 import { fetchCitiesList } from '../requests';
 
 const DataContext = React.createContext();
@@ -9,11 +10,13 @@ export const useData = () => {
 
 export const DataProvider = ({ children }) => {
   const [filteredCitiesList, setFilteredCitiesList] = useState([]);
+  const [isLoading, setLoadingState] = useState(true);
 
   const prepareCitiesList = async () => {
     const data = await fetchCitiesList();
     const citiesList = data.data;
 
+    setLoadingState(false);
     console.log(citiesList);
   };
 
@@ -23,5 +26,7 @@ export const DataProvider = ({ children }) => {
 
   const value = {};
 
-  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
+  return (
+    <DataContext.Provider value={value}>{isLoading ? <Loader /> : children}</DataContext.Provider>
+  );
 };

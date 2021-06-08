@@ -1,24 +1,20 @@
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import { DataProvider } from './contexts/DataContext';
-import { fetchFiveDaysForecast, fetchCitiesList } from './requests/index';
+
+import MainView from './views/MainView/MainView';
+import SearchView from './views/SearchView/SearchView';
 
 const App = () => {
-  const handleClick = async () => {
-    const data = await fetchFiveDaysForecast('Cieszyn');
-    console.log(data);
-  };
-
-  const handleCitiesClick = async () => {
-    const data = await fetchCitiesList();
-    console.log(data);
-  };
-
   return (
     <DataProvider>
-      <main>
-        <h1>weather app</h1>
-        <button onClick={handleClick}>fetch </button>
-        <button onClick={handleCitiesClick}>cities</button>
-      </main>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={SearchView} />
+          <Route path='/search:name' component={MainView} />
+        </Switch>
+      </Router>
+      <main></main>
     </DataProvider>
   );
 };

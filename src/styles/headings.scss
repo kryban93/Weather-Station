@@ -1,0 +1,39 @@
+@import './colors.scss';
+@import './fonts.scss';
+
+h1 {
+  @include secondary-font-600;
+  font-size: $fontM;
+  margin: 5px;
+}
+
+h2 {
+  @include secondary-font-400;
+  font-size: $fontS;
+  margin: 5px;
+}
+
+h3 {
+  @include secondary-font-300;
+  font-size: $fontXs;
+}
+
+p {
+  @include primary-font-300;
+  font-size: $fontXxs;
+}
+
+input {
+  @include primary-font-300;
+  font-size: $fontXxs;
+}
+
+label {
+  @include primary-font-300;
+  font-size: $fontXxs;
+}
+
+li {
+  @include secondary-font-300;
+  font-size: $fontXxs;
+}
