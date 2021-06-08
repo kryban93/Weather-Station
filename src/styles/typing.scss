@@ -34,6 +34,11 @@ label {
 }
 
 li {
-  @include secondary-font-300;
+  @include secondary-font-400;
+  font-size: $fontXs;
+}
+
+span {
+  @include primary-font-300;
   font-size: $fontXxs;
 }

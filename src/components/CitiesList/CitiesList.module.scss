@@ -1,0 +1,14 @@
+.list {
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  width: 80%;
+
+  &__element {
+    cursor: pointer;
+    padding: 2px;
+  }
+}

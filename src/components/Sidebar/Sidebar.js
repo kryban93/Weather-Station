@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import style from './Sidebar.module.scss';
 import { fetchCitiesList } from '../../requests';
+import SearchBar from '../SearchBar/SearchBar';
 
 const Sidebar = () => {
   const [filteredCitiesList, setFilteredCitiesList] = useState([]);
@@ -10,8 +11,7 @@ const Sidebar = () => {
   };
   return (
     <nav className={style.nav}>
-      <input className={style.input} />
-      <button className={style.btn}>search</button>
+      <SearchBar />
     </nav>
   );
 };

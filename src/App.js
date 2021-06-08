@@ -9,12 +9,13 @@ const App = () => {
   return (
     <DataProvider>
       <Router>
-        <Switch>
-          <Route exact path='/' component={SearchView} />
-          <Route path='/search:name' component={MainView} />
-        </Switch>
+        <main>
+          <Switch>
+            <Route exact path='/' component={SearchView} />
+            <Route path='/search/:name' component={MainView} />
+          </Switch>
+        </main>
       </Router>
-      <main></main>
     </DataProvider>
   );
 };
