@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Loader from '../components/Loader/Loader';
-import { fetchCitiesList } from '../requests';
+import { fetchCitiesList, fetchFiveDaysForecastById } from '../requests';
 import { findMatchCities } from '../additional';
 
 const DataContext = React.createContext();
@@ -14,6 +14,7 @@ export const DataProvider = ({ children }) => {
   const [matchedCities, setMatchedCities] = useState([]);
   const [isLoading, setLoadingState] = useState(true);
   const [searchValue, setSearchValue] = useState('');
+  const [formattedWeatherData, setFormattedWeatherData] = useState([]);
 
   const prepareCitiesList = async () => {
     const data = await fetchCitiesList();
@@ -25,8 +26,28 @@ export const DataProvider = ({ children }) => {
 
   const displayMatchedCities = () => {
     const tempCitiesArray = findMatchCities(searchValue, filteredCitiesList);
-    console.log(tempCitiesArray);
+
     setMatchedCities(tempCitiesArray);
+  };
+
+  const fetchWeatherData = async (cityId) => {
+    const response = await fetchFiveDaysForecastById(cityId);
+    const data = response.data;
+    const { city, list } = data;
+
+    const weatherData = {
+      cityName: city.name,
+      country: city.country,
+      forecast: list,
+      coords: {
+        lon: city.coord.lon,
+        lat: city.coord.lat,
+      },
+      state: city.state ? city.state : null,
+    };
+
+    console.log(weatherData);
+    setFormattedWeatherData(weatherData);
   };
 
   useEffect(() => {
@@ -38,6 +59,8 @@ export const DataProvider = ({ children }) => {
     setSearchValue,
     matchedCities,
     displayMatchedCities,
+    fetchWeatherData,
+    formattedWeatherData,
   };
 
   return (

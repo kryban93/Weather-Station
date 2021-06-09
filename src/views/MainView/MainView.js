@@ -1,25 +1,23 @@
-import React from 'react';
-import { fetchFiveDaysForecast, fetchCitiesList } from '../../requests';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import React, { useState, useEffect } from 'react';
+import Nav from '../../components/Nav/Nav';
+import Loader from '../../components/Loader/Loader';
+import { useData } from '../../contexts/DataContext';
 
 const MainView = () => {
-  const handleClick = async () => {
-    const data = await fetchFiveDaysForecast('Cieszyn');
-    console.log(data);
-  };
+  const { formattedWeatherData } = useData();
+  const [isLoading, setLoadingState] = useState(false);
 
-  const handleCitiesClick = async () => {
-    const data = await fetchCitiesList();
-    console.log(data);
-  };
-
+  useEffect(() => {
+    //formattedWeatherData ? setLoadingState(false) : setLoadingState(true);
+    console.log(formattedWeatherData);
+  }, [formattedWeatherData]);
   return (
-    <section>
-      <Sidebar />
-      <h1>weather app</h1>
-      <button onClick={handleClick}>fetch </button>
-      <button onClick={handleCitiesClick}>cities</button>
-    </section>
+    <>
+      <section>
+        <Nav />
+        <h1>{formattedWeatherData.cityName}</h1>
+      </section>
+    </>
   );
 };
 
