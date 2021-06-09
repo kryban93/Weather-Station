@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Nav from '../../components/Nav/Nav';
-import Loader from '../../components/Loader/Loader';
+import WeatherCard from '../../components/WeatherCard/WeatherCard';
 import { useData } from '../../contexts/DataContext';
+import style from './MainView.module.scss';
 
 const MainView = () => {
   const { formattedWeatherData } = useData();
-  const [isLoading, setLoadingState] = useState(false);
 
-  useEffect(() => {
-    //formattedWeatherData ? setLoadingState(false) : setLoadingState(true);
-    console.log(formattedWeatherData);
-  }, [formattedWeatherData]);
+  useEffect(() => {}, [formattedWeatherData]);
   return (
     <>
-      <section>
+      <section className={style.wrapper}>
         <Nav />
-        <h1>{formattedWeatherData.cityName}</h1>
+        <header className={style.header}>
+          <h1 className={style.header__title}>
+            {formattedWeatherData.name}, {formattedWeatherData.country}
+          </h1>
+        </header>
+        <WeatherCard />
       </section>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Loader from '../components/Loader/Loader';
 import { fetchCitiesList, fetchFiveDaysForecastById } from '../requests';
-import { findMatchCities } from '../additional';
+import { findMatchCities, regroupWeatherListValues } from '../additional';
 
 const DataContext = React.createContext();
 
@@ -33,18 +33,7 @@ export const DataProvider = ({ children }) => {
   const fetchWeatherData = async (cityId) => {
     const response = await fetchFiveDaysForecastById(cityId);
     const data = response.data;
-    const { city, list } = data;
-
-    const weatherData = {
-      cityName: city.name,
-      country: city.country,
-      forecast: list,
-      coords: {
-        lon: city.coord.lon,
-        lat: city.coord.lat,
-      },
-      state: city.state ? city.state : null,
-    };
+    const weatherData = regroupWeatherListValues(data);
 
     console.log(weatherData);
     setFormattedWeatherData(weatherData);

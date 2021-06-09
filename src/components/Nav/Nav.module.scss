@@ -1,5 +1,12 @@
 @import '../../styles/colors.scss';
 
 .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $purple-200;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 5px 0;
 }
