@@ -17,7 +17,7 @@ const MainView = () => {
             {formattedWeatherData.name}, {formattedWeatherData.country}
           </h1>
         </header>
-        <WeatherCard />
+        <WeatherCard actualforecast={formattedWeatherData.actual} />
       </section>
     </>
   );
