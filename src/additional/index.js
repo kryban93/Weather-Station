@@ -9,7 +9,8 @@ export const findMatchCities = (wordToMatch, cities) => {
 
 export const regroupWeatherListValues = (weatherData) => {
   let isFirst = true,
-    actualWeather;
+    actualWeather,
+    weatherCard;
   const formattedForecasts = {};
 
   const { list: listOfForecasts, city } = weatherData;
@@ -83,5 +84,7 @@ export const regroupWeatherListValues = (weatherData) => {
     },
     actual: actualWeather,
     list: formattedForecasts,
+    sunrise: new Date(city.sunrise * 1000),
+    sunset: new Date(city.sunset * 1000),
   };
 };

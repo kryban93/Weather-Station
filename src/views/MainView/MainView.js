@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import AdditionalInfo from '../../components/AdditionalInfo/AdditionalInfo';
 import Nav from '../../components/Nav/Nav';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
 import { useData } from '../../contexts/DataContext';
@@ -17,7 +18,8 @@ const MainView = () => {
             {formattedWeatherData.name}, {formattedWeatherData.country}
           </h1>
         </header>
-        <WeatherCard actualforecast={formattedWeatherData.actual} />
+        <WeatherCard />
+        <AdditionalInfo actualforecast={formattedWeatherData.actual} />
       </section>
     </>
   );
