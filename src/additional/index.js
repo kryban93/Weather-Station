@@ -13,6 +13,7 @@ export const regroupWeatherListValues = (weatherData) => {
     weatherCard;
   const formattedForecasts = {};
 
+  console.log(weatherData);
   const { list: listOfForecasts, city } = weatherData;
 
   for (let forecast of listOfForecasts) {
@@ -74,6 +75,14 @@ export const regroupWeatherListValues = (weatherData) => {
     }
     formattedForecasts[forecastKey].push(formattedForecast);
   }
+
+  weatherCard = {
+    sunrise: new Date(city.sunrise * 1000),
+    sunset: new Date(city.sunset * 1000),
+    clouds: actualWeather.clouds,
+    feels: actualWeather.feels,
+    temp: actualWeather.temp,
+  };
   return {
     name: city.name,
     id: city.id,
@@ -82,9 +91,9 @@ export const regroupWeatherListValues = (weatherData) => {
       lon: city.coord.lon,
       lat: city.coord.lat,
     },
+
     actual: actualWeather,
     list: formattedForecasts,
-    sunrise: new Date(city.sunrise * 1000),
-    sunset: new Date(city.sunset * 1000),
+    weatherCard,
   };
 };

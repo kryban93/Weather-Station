@@ -1,17 +1,36 @@
+import { useEffect } from 'react';
 import icons from '../../assets/icons';
 import style from './WeatherCard.module.scss';
+import styled from 'styled-components';
 
-const WeatherCard = ({ actualforecast }) => {
+const StyledWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+  border: 1px solid red;
+`;
+
+const WeatherCard = ({ weatherCardData }) => {
+  let sunrise = `${weatherCardData.sunrise.getHours()}:${weatherCardData.sunrise.getMinutes()}`;
+  let sunset = `${weatherCardData.sunset.getHours()}:${weatherCardData.sunset.getMinutes()}`;
+
   return (
-    <div className={style.container}>
-      <div className={style.sunrise}>
-        <img src={icons.sunrise} alt='sunrise icon' />
-        <p></p>
+    <StyledWrapper>
+      <div className={style.timebar}>
+        <div className={style.timebar__content}>
+          <div className={style.timebar__time}>
+            <img src={icons.sunrise} className={style.timebar__image} alt='sunrise icon' />
+            <p>{sunrise}</p>
+          </div>
+          <div className={style.timebar__time}>
+            <img src={icons.sunset} className={style.timebar__image} alt='sunset icon' />
+            <p>{sunset}</p>
+          </div>
+        </div>
       </div>
-      <div className={style.sunset}>
-        <img src={icons.sunset} alt='sunset icon' />
-      </div>
-    </div>
+    </StyledWrapper>
   );
 };
 

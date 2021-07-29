@@ -1,8 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useData } from '../../contexts/DataContext';
-import style from './CitiesList.module.scss';
 import { useHistory } from 'react-router';
 import Loader from '../Loader/Loader';
+import styled from 'styled-components';
+
+const List = styled.ul`
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  width: 80%;
+`;
+
+const ListElement = styled.li`
+  cursor: pointer;
+  padding: 2px;
+  font-size: ${(props) => props.theme.fontSizes.fontXs};
+  font-weight: ${(props) => props.theme.fontWeights.body};
+  font-family: ${(props) => props.theme.fonts.heading};
+`;
 
 const CitiesList = () => {
   const { matchedCities, searchValue, displayMatchedCities, setSearchValue, fetchWeatherData } =
@@ -29,21 +47,20 @@ const CitiesList = () => {
 
   return (
     <>
-      <ul className={style.list}>
+      <List>
         {matchedCities
           ? matchedCities.map((city, index) => (
-              <li
+              <ListElement
                 key={`${city.name}${city.country}${city.state}${index}`}
-                className={style.list__element}
                 onClick={(event) => handleClickListElement(event)}
                 data-id={city.id}
                 data-name={city.name}
               >
                 {city.name}, {city.country}, {city.state ? city.state : null}
-              </li>
+              </ListElement>
             ))
           : null}
-      </ul>
+      </List>
       {isLoading && <Loader />}
     </>
   );

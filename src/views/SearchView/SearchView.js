@@ -1,16 +1,33 @@
-import style from './SearchView.module.scss';
 import CitiesList from '../../components/CitiesList/CitiesList';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import Heading from '../../components/Heading/Heading';
+import styled from 'styled-components';
 
+const StyledSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: ${(props) => props.theme.colors.blue200};
+`;
+
+const Content = styled.div`
+  border-radius: 10px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+`;
 const SearchView = () => {
   return (
-    <section className={style.wrapper}>
-      <div className={style.content}>
-        <h1>What's the place?</h1>
+    <StyledSection>
+      <Content>
+        <Heading>What's the place?</Heading>
         <SearchBar />
-      </div>
+      </Content>
       <CitiesList />
-    </section>
+    </StyledSection>
   );
 };
 

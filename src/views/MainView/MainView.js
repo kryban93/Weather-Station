@@ -3,7 +3,21 @@ import AdditionalInfo from '../../components/AdditionalInfo/AdditionalInfo';
 import Nav from '../../components/Nav/Nav';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
 import { useData } from '../../contexts/DataContext';
-import style from './MainView.module.scss';
+import styled from 'styled-components';
+import Heading from '../../components/Heading/Heading';
+
+const StyledSection = styled.section`
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding-top: 50px;
+`;
+
+const StyledHeader = styled.header`
+  text-align: center;
+`;
 
 const MainView = () => {
   const { formattedWeatherData } = useData();
@@ -11,16 +25,17 @@ const MainView = () => {
   useEffect(() => {}, [formattedWeatherData]);
   return (
     <>
-      <section className={style.wrapper}>
+      <StyledSection>
         <Nav />
-        <header className={style.header}>
-          <h1 className={style.header__title}>
+        <StyledHeader>
+          <Heading>
             {formattedWeatherData.name}, {formattedWeatherData.country}
-          </h1>
-        </header>
-        <WeatherCard />
+          </Heading>
+        </StyledHeader>
+
+        <WeatherCard weatherCardData={formattedWeatherData.weatherCard} />
         <AdditionalInfo actualforecast={formattedWeatherData.actual} />
-      </section>
+      </StyledSection>
     </>
   );
 };
