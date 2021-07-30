@@ -14,8 +14,11 @@ const StyledNav = styled.nav`
 `;
 
 const StyledCitiesList = styled(CitiesList)`
-  position: fixed;
-  border: 1px solid red;
+  position: absolute;
+  background: white;
+  z-index: 2;
+  overflow: auto;
+  margin: 0;
 `;
 
 const Nav = () => {

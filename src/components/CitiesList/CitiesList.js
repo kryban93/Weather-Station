@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const List = styled.ul`
   box-sizing: border-box;
-  position: relative;
+  position: ${(props) => (props.secondary ? 'absolute' : 'relative')};
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@ const ListElement = styled.li`
   font-family: ${(props) => props.theme.fonts.heading};
 `;
 
-const CitiesList = () => {
+const CitiesList = ({ className }) => {
   const { matchedCities, searchValue, displayMatchedCities, setSearchValue, fetchWeatherData } =
     useData();
   const history = useHistory();
@@ -47,7 +47,7 @@ const CitiesList = () => {
 
   return (
     <>
-      <List>
+      <List className={className}>
         {matchedCities
           ? matchedCities.map((city, index) => (
               <ListElement
