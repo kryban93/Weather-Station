@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
-  font-size: ${(props) => props.theme.fontSizes.fontM};
-  font-weight: ${(props) => props.theme.fontWeights.heading};
-  font-family: ${(props) => props.theme.fonts.heading};
-  line-height: ${(props) => props.theme.lineHeights.heading};
+  font-size: ${({ theme }) => theme.fontSizes.fontM};
+  font-weight: ${({ theme }) => theme.fontWeights.heading};
+  font-family: ${({ theme }) => theme.fonts.heading};
+  line-height: ${({ theme }) => theme.lineHeights.heading};
   margin: 5px;
 `;
 
-const Heading = ({ children }) => {
-  return <StyledHeading>{children}</StyledHeading>;
+const Heading = ({ children, className }) => {
+  return <StyledHeading className={className}>{children}</StyledHeading>;
 };
 
 export default Heading;

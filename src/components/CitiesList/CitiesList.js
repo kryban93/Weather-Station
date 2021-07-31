@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const List = styled.ul`
   box-sizing: border-box;
-  position: ${(props) => (props.secondary ? 'absolute' : 'relative')};
+  position: ${({ secondary }) => (secondary ? 'absolute' : 'relative')};
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -17,9 +17,13 @@ const List = styled.ul`
 const ListElement = styled.li`
   cursor: pointer;
   padding: 2px;
-  font-size: ${(props) => props.theme.fontSizes.fontXs};
-  font-weight: ${(props) => props.theme.fontWeights.body};
-  font-family: ${(props) => props.theme.fonts.heading};
+  font-size: ${({ theme }) => theme.fontSizes.fontXs};
+  font-weight: ${({ theme }) => theme.fontWeights.body};
+  font-family: ${({ theme }) => theme.fonts.heading};
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const CitiesList = ({ className }) => {

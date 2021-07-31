@@ -1,16 +1,27 @@
-import style from './AdditionalInfo.module.scss';
+import styled from 'styled-components';
+import AdditionalInfoElement from './AdditionalInfoElement';
 
-const AdditionalInfo = ({ actualforecast }) => {
+const StyledWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+`;
+
+const AdditionalInfo = ({ className, actualforecast }) => {
   return (
-    <div className={style.wrapper}>
-      {/*{Object.keys(actualforecast).map((key) => (
-        <div className={style.content}>
-          <h3>{actualforecast[key].desc}</h3>
-          <p>{actualforecast[key].value}</p>
-          <p>{actualforecast[key].unit}</p>
-        </div>
-      ))} */}
-    </div>
+    <StyledWrapper>
+      {Object.keys(actualforecast).map((key) => (
+        <AdditionalInfoElement
+          description={actualforecast[key].desc}
+          value={actualforecast[key].value}
+          unit={actualforecast[key].unit}
+          className={className}
+          key={actualforecast[key].desc}
+        />
+      ))}
+    </StyledWrapper>
   );
 };
 

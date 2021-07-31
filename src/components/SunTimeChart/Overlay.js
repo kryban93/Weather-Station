@@ -10,7 +10,7 @@ const Overlay = styled(ChartDiv)`
   height: calc(200% - 20px);
   border-radius: 100%;
   background: white;
-  z-index: 2;
+  z-index: 1;
 `;
 
 export default Overlay;

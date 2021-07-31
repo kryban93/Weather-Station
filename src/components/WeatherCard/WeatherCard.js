@@ -1,8 +1,10 @@
 import icons from '../../assets/icons';
 import styled from 'styled-components';
-import ChartWrapper from '../SunTimeChart/ChartWrapper';
-import ChartValue from '../SunTimeChart/ChartValue';
-import Overlay from '../SunTimeChart/Overlay';
+import SunTimeChart from '../SunTimeChart/SunTimeChart';
+import SunTimeValue from '../SunTimeValue/SunTimeValue';
+import IconComponent from '../IconComponent/IconComponent';
+import Heading from '../Heading/Heading';
+import Paragraph from '../Paragraph/Paragraph';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -14,10 +16,24 @@ const StyledWrapper = styled.div`
 
 const Content = styled.div`
   display: flex;
+  position: relative;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 75%;
+  width: 325px;
   justify-content: space-between;
+  align-items: flex-start;
+`;
+
+const TemperatureInfo = styled.div``;
+
+const StyledHeading = styled(Heading)`
+  font-size: ${({ theme }) => theme.fontSizes.fontXxl};
+  margin: 0 auto;
+  padding: 0 auto;
+`;
+
+const StyledSpan = styled.span`
+  font-size: ${({ theme }) => theme.fontSizes.fontL};
 `;
 
 const WeatherCard = ({ weatherCardData }) => {
@@ -29,27 +45,24 @@ const WeatherCard = ({ weatherCardData }) => {
   const timePassedPercentage = (timePassed / suntime) * 100;
   const timePassedDegrees = Math.floor(180 - (180 * timePassedPercentage) / 100);
 
-  console.log(weatherCardData.sunset.getTime());
-  console.log(weatherCardData.sunrise.getTime());
-  console.log(suntime);
-  console.log(actualTime.getTime());
-  console.log(timePassed);
-
   return (
     <StyledWrapper>
-      <ChartWrapper>
-        <ChartValue timePassedDegrees={timePassedDegrees} />
-        <Overlay />
-      </ChartWrapper>
+      <SunTimeChart timePassedDegrees={timePassedDegrees} />
       <Content>
-        <div>
-          <img src={icons.sunrise} alt='sunrise icon' />
-          <p>{sunrise}</p>
-        </div>
-        <div>
-          <img src={icons.sunset} alt='sunset icon' />
-          <p>{sunset}</p>
-        </div>
+        <SunTimeValue>
+          <IconComponent src={icons.sunrise} alt='sunsire icon' />
+          <Paragraph>{sunrise}</Paragraph>
+        </SunTimeValue>
+        <TemperatureInfo>
+          <StyledHeading>
+            {weatherCardData.temp.value}
+            <StyledSpan>{weatherCardData.temp.unit}</StyledSpan>
+          </StyledHeading>
+        </TemperatureInfo>
+        <SunTimeValue>
+          <IconComponent src={icons.sunset} alt='sunset icon' />
+          <Paragraph>{sunset}</Paragraph>
+        </SunTimeValue>
       </Content>
     </StyledWrapper>
   );

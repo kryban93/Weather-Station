@@ -2,7 +2,7 @@ const theme = {
   fonts: {
     body: 'roboto, sans-serif',
     heading: 'Montserrat, sans-serif',
-    additional: 'arial , sans-serif',
+    additional: 'roboto , sans-serif',
   },
   fontWeights: {
     body: 400,

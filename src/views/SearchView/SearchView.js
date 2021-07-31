@@ -8,7 +8,7 @@ const StyledSection = styled.section`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-color: ${(props) => props.theme.colors.blue200};
+  background-color: ${({ theme }) => theme.colors.blue200};
 `;
 
 const Content = styled.div`

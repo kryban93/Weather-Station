@@ -1,6 +1,7 @@
 import { useData } from '../../contexts/DataContext';
 import icons from '../../assets/icons';
 import styled from 'styled-components';
+import IconComponent from '../IconComponent/IconComponent';
 
 const SearchBarWrapper = styled.div`
   display: flex;
@@ -32,7 +33,7 @@ const SearchBar = () => {
     <SearchBarWrapper>
       <Input value={searchValue} onChange={(event) => setSearchValue(event.target.value)} />
       <SearchButton>
-        <img src={icons.search_black} alt='search button' />
+        <IconComponent src={icons.search_black} alt='search button' />
       </SearchButton>
     </SearchBarWrapper>
   );
