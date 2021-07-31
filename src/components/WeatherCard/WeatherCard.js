@@ -1,7 +1,8 @@
 import icons from '../../assets/icons';
-import style from './WeatherCard.module.scss';
 import styled from 'styled-components';
-import SunTimeChart from '../SunTimeChart/SunTimeChart';
+import ChartWrapper from '../SunTimeChart/ChartWrapper';
+import ChartValue from '../SunTimeChart/ChartValue';
+import Overlay from '../SunTimeChart/Overlay';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -26,22 +27,27 @@ const WeatherCard = ({ weatherCardData }) => {
   const suntime = weatherCardData.sunset.getTime() - weatherCardData.sunrise.getTime();
   const timePassed = actualTime.getTime() - weatherCardData.sunrise.getTime();
   const timePassedPercentage = (timePassed / suntime) * 100;
-  const timePassedDegrees = (180 * timePassedPercentage) / 100;
+  const timePassedDegrees = Math.floor(180 - (180 * timePassedPercentage) / 100);
 
+  console.log(weatherCardData.sunset.getTime());
+  console.log(weatherCardData.sunrise.getTime());
   console.log(suntime);
+  console.log(actualTime.getTime());
   console.log(timePassed);
-  console.log(timePassedDegrees);
 
   return (
     <StyledWrapper>
-      <SunTimeChart timePassedDegrees={timePassedDegrees} />
+      <ChartWrapper>
+        <ChartValue timePassedDegrees={timePassedDegrees} />
+        <Overlay />
+      </ChartWrapper>
       <Content>
-        <div className={style.timebar__time}>
-          <img src={icons.sunrise} className={style.timebar__image} alt='sunrise icon' />
+        <div>
+          <img src={icons.sunrise} alt='sunrise icon' />
           <p>{sunrise}</p>
         </div>
-        <div className={style.timebar__time}>
-          <img src={icons.sunset} className={style.timebar__image} alt='sunset icon' />
+        <div>
+          <img src={icons.sunset} alt='sunset icon' />
           <p>{sunset}</p>
         </div>
       </Content>
