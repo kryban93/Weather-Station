@@ -33,7 +33,7 @@ export const regroupWeatherListValues = (weatherData) => {
         temp: {
           desc: 'now',
           value: Math.round((forecast.main.temp + -273.15) * 10) / 10,
-          unit: 'C',
+          unit: '\xB0C',
         },
         pressure: {
           desc: 'pressure',

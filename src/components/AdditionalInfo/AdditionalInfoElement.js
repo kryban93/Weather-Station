@@ -7,6 +7,7 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 5px;
+  margin: 2px;
 `;
 
 const StyledSpan = styled.span`
@@ -15,14 +16,20 @@ const StyledSpan = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.fontXxs};
 `;
 
+const StyledHeading = styled(Heading)`
+ margin: 0;
+ pading; 0;
+ line-height: initial;
+`;
+
 const AdditionalInfoElement = ({ description, value, unit }) => {
   return (
     <StyledWrapper>
       <Paragraph>{description}</Paragraph>
-      <Heading>
+      <StyledHeading>
         {value}
         <StyledSpan>{unit}</StyledSpan>
-      </Heading>
+      </StyledHeading>
     </StyledWrapper>
   );
 };
