@@ -11,7 +11,7 @@ const sunAnimation = (timePassedDegrees) => keyframes`
 `;
 
 const ChartValue = styled(ChartDiv)`
-  background: linear-gradient(to right, rgba(255, 247, 89, 1) 0%, rgba(209, 133, 40, 1) 100%);
+  background: linear-gradient(to right, rgba(255, 255, 100, 1) 0%, rgba(209, 133, 40, 1) 100%);
   transform-origin: center bottom;
   position: absolute;
   left: 0;

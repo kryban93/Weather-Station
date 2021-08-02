@@ -11,6 +11,7 @@ const StyledNav = styled.nav`
   width: 100%;
   top: 0;
   padding: 5px 0;
+  z-index: 3;
 `;
 
 const StyledCitiesList = styled(CitiesList)`

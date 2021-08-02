@@ -5,6 +5,7 @@ import WeatherCard from '../../components/WeatherCard/WeatherCard';
 import { useData } from '../../contexts/DataContext';
 import styled from 'styled-components';
 import Heading from '../../components/Heading/Heading';
+import WeatherChartWrapper from '../../components/WeatherChart/WeatherChartWrapper';
 
 const StyledSection = styled.section`
   box-sizing: border-box;
@@ -35,6 +36,7 @@ const MainView = () => {
 
         <WeatherCard weatherCardData={formattedWeatherData.weatherCard} />
         <AdditionalInfo actualforecast={formattedWeatherData.actual} />
+        <WeatherChartWrapper chartData={formattedWeatherData.list} />
       </StyledSection>
     </>
   );

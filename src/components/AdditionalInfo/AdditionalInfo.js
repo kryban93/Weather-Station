@@ -10,6 +10,7 @@ const StyledWrapper = styled.div`
 `;
 
 const AdditionalInfo = ({ className, actualforecast }) => {
+  console.log(actualforecast);
   return (
     <StyledWrapper>
       {Object.keys(actualforecast).map((key) => (

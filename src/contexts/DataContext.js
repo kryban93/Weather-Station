@@ -33,10 +33,8 @@ export const DataProvider = ({ children }) => {
   const fetchWeatherData = async (cityId) => {
     const response = await fetchFiveDaysForecastById(cityId);
     const data = response.data;
-    console.log(data);
     const weatherData = regroupWeatherListValues(data);
 
-    console.log(weatherData);
     setFormattedWeatherData(weatherData);
   };
 

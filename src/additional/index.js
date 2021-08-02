@@ -10,10 +10,11 @@ export const findMatchCities = (wordToMatch, cities) => {
 export const regroupWeatherListValues = (weatherData) => {
   let isFirst = true,
     actualWeather,
-    weatherCard;
+    actualDate,
+    weatherCard,
+    weatherCardTemp;
   const formattedForecasts = {};
 
-  console.log(weatherData);
   const { list: listOfForecasts, city } = weatherData;
 
   for (let forecast of listOfForecasts) {
@@ -28,13 +29,13 @@ export const regroupWeatherListValues = (weatherData) => {
       windSpeed: forecast.wind.speed,
     };
     if (isFirst) {
+      weatherCardTemp = {
+        desc: 'now',
+        value: Math.round((forecast.main.temp + -273.15) * 10) / 10,
+        unit: '\xB0C',
+      };
+      actualDate = new Date(forecast.dt * 1000);
       actualWeather = {
-        date: new Date(forecast.dt * 1000),
-        temp: {
-          desc: 'now',
-          value: Math.round((forecast.main.temp + -273.15) * 10) / 10,
-          unit: '\xB0C',
-        },
         pressure: {
           desc: 'pressure',
           value: forecast.main.pressure,
@@ -79,9 +80,7 @@ export const regroupWeatherListValues = (weatherData) => {
   weatherCard = {
     sunrise: new Date(city.sunrise * 1000),
     sunset: new Date(city.sunset * 1000),
-    clouds: actualWeather.clouds,
-    feels: actualWeather.feels,
-    temp: actualWeather.temp,
+    temp: weatherCardTemp,
   };
   return {
     name: city.name,
@@ -91,9 +90,31 @@ export const regroupWeatherListValues = (weatherData) => {
       lon: city.coord.lon,
       lat: city.coord.lat,
     },
-
+    actualDate,
     actual: actualWeather,
     list: formattedForecasts,
     weatherCard,
   };
+};
+
+export const prepareChartData = (chartData) => {
+  const inputChartData = { ...chartData };
+  console.log(inputChartData);
+  let fullChartDataArray = [];
+  const chartDataKeys = [];
+  Object.keys(inputChartData).map((key) => {
+    fullChartDataArray.push(inputChartData[key]);
+    chartDataKeys.push(key);
+  });
+  console.log(fullChartDataArray);
+  console.log(chartDataKeys);
+  let chartDataToDisplay = [];
+  for (const chartArrayElement of fullChartDataArray[1]) {
+    chartDataToDisplay.push({
+      x: chartArrayElement.date,
+      y: chartArrayElement.temp,
+    });
+  }
+
+  return chartDataToDisplay;
 };

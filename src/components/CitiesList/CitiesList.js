@@ -38,7 +38,6 @@ const CitiesList = ({ className }) => {
     const cityId = event.target.dataset.id;
 
     setSearchValue('');
-    console.log(cityName + cityId);
 
     await fetchWeatherData(cityId);
     setLoadingState(false);

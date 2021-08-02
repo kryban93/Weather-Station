@@ -7,7 +7,14 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 5px;
-  margin: 2px;
+  margin: 3px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+
+  &:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+  }
 `;
 
 const StyledSpan = styled.span`
