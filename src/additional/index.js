@@ -81,6 +81,7 @@ export const regroupWeatherListValues = (weatherData) => {
     sunrise: new Date(city.sunrise * 1000),
     sunset: new Date(city.sunset * 1000),
     temp: weatherCardTemp,
+    clouds: actualWeather.clouds.value,
   };
   return {
     name: city.name,
@@ -99,15 +100,14 @@ export const regroupWeatherListValues = (weatherData) => {
 
 export const prepareChartData = (chartData) => {
   const inputChartData = { ...chartData };
-  console.log(inputChartData);
+
   let fullChartDataArray = [];
   const chartDataKeys = [];
   Object.keys(inputChartData).map((key) => {
     fullChartDataArray.push(inputChartData[key]);
     chartDataKeys.push(key);
   });
-  console.log(fullChartDataArray);
-  console.log(chartDataKeys);
+
   let chartDataToDisplay = [];
   for (const chartArrayElement of fullChartDataArray[1]) {
     chartDataToDisplay.push({

@@ -6,7 +6,9 @@ const StyledWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   width: 80%;
+  margin-top: 100px;
 `;
 
 const AdditionalInfo = ({ className, actualforecast }) => {

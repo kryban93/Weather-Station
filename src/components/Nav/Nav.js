@@ -11,13 +11,13 @@ const StyledNav = styled.nav`
   width: 100%;
   top: 0;
   padding: 5px 0;
-  z-index: 3;
+  zindex: 10;
 `;
 
 const StyledCitiesList = styled(CitiesList)`
   position: absolute;
   background: white;
-  z-index: 3;
+  z-index: 4;
   overflow: auto;
   margin: 0;
 `;
