@@ -7,6 +7,8 @@ import {
   XAxis,
   YAxis,
 } from 'react-vis';
+import useWindowDimensions from '../../additional/useWindowDimensions';
+import { useEffect } from 'react';
 
 const StyledWrapper = styled.div`
   box-sizing: border-box;
@@ -15,6 +17,10 @@ const StyledWrapper = styled.div`
 `;
 
 const WeatherChart = ({ data }) => {
+  const { width } = useWindowDimensions();
+
+  useEffect(() => {}, []);
+
   const LinePlotProperties = {
     animation: true,
     strokeWidth: 2,
@@ -27,7 +33,7 @@ const WeatherChart = ({ data }) => {
     <StyledWrapper>
       <XYPlot
         drawMode={0}
-        width={400}
+        width={width - 20}
         height={200}
         style={{ fill: 'none' }}
         /*onMouseLeave={}*/
