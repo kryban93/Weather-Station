@@ -110,9 +110,10 @@ export const prepareChartData = (chartData) => {
 
   let chartDataToDisplay = [];
   for (const chartArrayElement of fullChartDataArray[1]) {
+    let chartHours = chartArrayElement.date.getHours();
     chartDataToDisplay.push({
-      x: chartArrayElement.date,
-      y: chartArrayElement.temp,
+      time: `${chartHours}:00`,
+      temperature: chartArrayElement.temp,
     });
   }
 
