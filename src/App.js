@@ -6,20 +6,20 @@ import SearchView from './views/SearchView/SearchView';
 import theme from './styles/theme';
 
 const App = () => {
-  return (
-    <DataProvider>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <main>
-            <Switch>
-              <Route exact path='/' component={SearchView} />
-              <Route path='/search/:name' component={MainView} />
-            </Switch>
-          </main>
-        </Router>
-      </ThemeProvider>
-    </DataProvider>
-  );
+	return (
+		<DataProvider>
+			<ThemeProvider theme={theme}>
+				<Router>
+					<main>
+						<Switch>
+							<Route exact path="/" component={SearchView} />
+							<Route path="/search/:name" component={MainView} />
+						</Switch>
+					</main>
+				</Router>
+			</ThemeProvider>
+		</DataProvider>
+	);
 };
 
 export default App;

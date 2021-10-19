@@ -10,23 +10,23 @@ import nt_partlycloudy from './weatherCard/nt_partlycloudy.svg';
 import nt_mostlycloudy from './weatherCard/nt_mostlycloudy.svg';
 
 const icons = {
-  search_black,
-  sunrise,
-  sunset,
-  weatherCard: {
-    night: {
-      cloudy: cloudy,
-      partlyCloudy: nt_partlycloudy,
-      mostlyCloudy: nt_mostlycloudy,
-      clear: nt_sunny,
-    },
-    day: {
-      cloudy: cloudy,
-      partlyCloudy: mostlysunny,
-      mostlyCloudy: partlycloudy,
-      clear: clear,
-    },
-  },
+	search_black,
+	sunrise,
+	sunset,
+	weatherCard: {
+		night: {
+			cloudy,
+			partlyCloudy: nt_partlycloudy,
+			mostlyCloudy: nt_mostlycloudy,
+			clear: nt_sunny,
+		},
+		day: {
+			cloudy,
+			partlyCloudy: mostlysunny,
+			mostlyCloudy: partlycloudy,
+			clear,
+		},
+	},
 };
 
 export default icons;

@@ -1,0 +1,47 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"jest": true
+	},
+	"extends": [
+		"plugin:react/recommended",
+		"airbnb",
+		"plugin:prettier/recommended"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 12,
+		"sourceType": "module"
+	},
+	"plugins": ["react"],
+	"rules": {
+		"react/jsx-filename-extension": [1, { "extensions": [".jsx", ".js"] }],
+		"no-use-before-define": "off",
+		"no-tabs": 0,
+		"react/react-in-jsx-scope": "off",
+		"no-shadow": "off",
+		"no-unused-vars": "off",
+		"import/extensions": [
+			"error",
+			"ignorePackages",
+			{
+				"js": "never",
+				"jsx": "never"
+			}
+		],
+		"comma-dangle": ["error", "always-multiline"],
+		"object-curly-newline": "off",
+		"jest/no-mocks-import": "off"
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx"]
+			}
+		}
+	},
+	"ignorePatterns": ["src/**/*.test.js", "src/frontend/generated/*"]
+}
