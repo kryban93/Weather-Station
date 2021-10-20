@@ -97,19 +97,24 @@ export const regroupWeatherListValues = (weatherData) => {
 	};
 };
 
-export const prepareChartData = (chartData) => {
+export const prepareChartDataKeys = (chartData) => {
 	const inputChartData = { ...chartData };
-
-	const fullChartDataArray = [];
 	const chartDataKeys = [];
 	Object.keys(inputChartData).map((key) => {
-		fullChartDataArray.push(inputChartData[key]);
 		chartDataKeys.push(key);
 	});
+	return chartDataKeys;
+};
 
-	console.log(chartDataKeys);
+export const prepareChartData = (chartData, currentIndex) => {
+	const inputChartData = { ...chartData };
+	const fullChartDataArray = [];
+	Object.keys(inputChartData).map((key) => {
+		fullChartDataArray.push(inputChartData[key]);
+	});
+
 	const chartDataToDisplay = [];
-	for (const chartArrayElement of fullChartDataArray[0]) {
+	for (const chartArrayElement of fullChartDataArray[2]) {
 		const chartHours = chartArrayElement.date.getHours();
 		chartDataToDisplay.push({
 			time: `${chartHours}:00`,
