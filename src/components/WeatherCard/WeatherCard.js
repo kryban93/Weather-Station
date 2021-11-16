@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import icons from '../../assets/icons';
 import SunTimeChart from '../SunTimeChart/SunTimeChart';
@@ -82,3 +83,15 @@ const WeatherCard = ({ weatherCardData }) => {
 };
 
 export default WeatherCard;
+
+WeatherCard.propTypes = {
+	weatherCardData: PropTypes.shape({
+		sunrise: PropTypes.string.isRequired,
+		sunset: PropTypes.string.isRequired,
+		clouds: PropTypes.number.isRequired,
+		temp: PropTypes.shape({
+			value: PropTypes.number.isRequired,
+			unit: PropTypes.string.isRequired,
+		}),
+	}).isRequired,
+};

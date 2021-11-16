@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import AdditionalInfoElement from './AdditionalInfoElement';
 
@@ -29,3 +30,12 @@ const AdditionalInfo = ({ className, actualforecast }) => {
 };
 
 export default AdditionalInfo;
+
+AdditionalInfo.propTypes = {
+	className: PropTypes.string,
+	actualforecast: PropTypes.shape({}).isRequired,
+};
+
+AdditionalInfo.defaultProps = {
+	className: '',
+};

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Loader from '../components/Loader/Loader';
 import { fetchCitiesList, fetchFiveDaysForecastById } from '../requests';
 import { findMatchCities, regroupWeatherListValues } from '../additional';
@@ -56,4 +57,8 @@ export const DataProvider = ({ children }) => {
 			{isLoading ? <Loader /> : children}
 		</DataContext.Provider>
 	);
+};
+
+DataProvider.propTypes = {
+	children: PropTypes.element.isRequired,
 };

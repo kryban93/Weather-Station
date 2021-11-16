@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Heading from '../Heading/Heading';
 import Paragraph from '../Paragraph/Paragraph';
@@ -42,3 +43,9 @@ const AdditionalInfoElement = ({ description, value, unit }) => {
 };
 
 export default AdditionalInfoElement;
+
+AdditionalInfoElement.propTypes = {
+	description: PropTypes.string.isRequired,
+	value: PropTypes.number.isRequired,
+	unit: PropTypes.string.isRequired,
+};

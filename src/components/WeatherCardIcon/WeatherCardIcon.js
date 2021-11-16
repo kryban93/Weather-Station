@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import icons from '../../assets/icons';
 import IconComponent from '../IconComponent/IconComponent';
@@ -34,3 +35,7 @@ const WeatherCardIcon = ({ clouds }) => {
 };
 
 export default WeatherCardIcon;
+
+WeatherCardIcon.propTypes = {
+	clouds: PropTypes.string.isRequired,
+};

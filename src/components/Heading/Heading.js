@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
@@ -13,3 +14,12 @@ const Heading = ({ children, className }) => {
 };
 
 export default Heading;
+
+Heading.propTypes = {
+	className: PropTypes.string,
+	children: PropTypes.element.isRequired,
+};
+
+Heading.defaultProps = {
+	className: '',
+};

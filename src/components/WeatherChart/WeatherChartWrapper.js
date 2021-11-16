@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import WeatherChart from './WeatherChart';
 import { prepareChartData, prepareChartDataKeys } from '../../additional';
@@ -80,3 +81,12 @@ const WeatherChartWrapper = ({ chartData, className }) => {
 };
 
 export default WeatherChartWrapper;
+
+WeatherChartWrapper.propTypes = {
+	className: PropTypes.string,
+	chartData: PropTypes.object.isRequired,
+};
+
+WeatherChartWrapper.defaultProps = {
+	className: '',
+};

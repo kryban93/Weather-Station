@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ChartWrapper from './ChartWrapper';
 import ChartValue from './ChartValue';
 import Overlay from './Overlay';
@@ -12,3 +13,7 @@ const SunTimeChart = ({ timePassedDegrees }) => {
 };
 
 export default SunTimeChart;
+
+SunTimeChart.propTypes = {
+	timePassedDegrees: PropTypes.number.isRequired,
+};

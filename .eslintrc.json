@@ -34,7 +34,10 @@
 		],
 		"comma-dangle": ["error", "always-multiline"],
 		"object-curly-newline": "off",
-		"jest/no-mocks-import": "off"
+		"jest/no-mocks-import": "off",
+		"react/forbid-prop-types": "off",
+		"eslint consistent-return:": "off",
+		"consistent-return": "off"
 	},
 	"settings": {
 		"import/resolver": {

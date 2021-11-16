@@ -16,7 +16,7 @@ export const regroupWeatherListValues = (weatherData) => {
 
 	const { list: listOfForecasts, city } = weatherData;
 
-	for (const forecast of listOfForecasts) {
+	listOfForecasts.forEach((forecast) => {
 		const formattedForecast = {
 			date: new Date(forecast.dt * 1000),
 			feels: Math.round((forecast.main.feels_like + -273.15) * 10) / 10,
@@ -74,7 +74,7 @@ export const regroupWeatherListValues = (weatherData) => {
 			formattedForecasts[forecastKey] = [];
 		}
 		formattedForecasts[forecastKey].push(formattedForecast);
-	}
+	});
 
 	const weatherCard = {
 		sunrise: new Date(city.sunrise * 1000),
@@ -100,7 +100,7 @@ export const regroupWeatherListValues = (weatherData) => {
 export const prepareChartDataKeys = (chartData) => {
 	const inputChartData = { ...chartData };
 	const chartDataKeys = [];
-	Object.keys(inputChartData).map((key) => {
+	Object.keys(inputChartData).forEach((key) => {
 		chartDataKeys.push(key);
 	});
 	return chartDataKeys;
@@ -109,18 +109,18 @@ export const prepareChartDataKeys = (chartData) => {
 export const prepareChartData = (chartData, currentIndex) => {
 	const inputChartData = { ...chartData };
 	const fullChartDataArray = [];
-	Object.keys(inputChartData).map((key) => {
+	Object.keys(inputChartData).forEach((key) => {
 		fullChartDataArray.push(inputChartData[key]);
 	});
 
 	const chartDataToDisplay = [];
-	for (const chartArrayElement of fullChartDataArray[2]) {
+	fullChartDataArray[2].forEach((chartArrayElement) => {
 		const chartHours = chartArrayElement.date.getHours();
 		chartDataToDisplay.push({
 			time: `${chartHours}:00`,
 			temperature: chartArrayElement.temp,
 		});
-	}
+	});
 
 	return chartDataToDisplay;
 };

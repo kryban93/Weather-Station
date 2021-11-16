@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 
 const StyledParagraph = styled.p`
@@ -11,3 +13,12 @@ const Paragraph = ({ className, children }) => {
 };
 
 export default Paragraph;
+
+Paragraph.propTypes = {
+	className: PropTypes.string,
+	children: PropTypes.element.isRequired,
+};
+
+Paragraph.defaultProps = {
+	className: '',
+};

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
@@ -59,7 +60,7 @@ const CitiesList = ({ className }) => {
 				{matchedCities
 					? matchedCities.map((city, index) => (
 							<ListElement
-								key={`${city.name}${city.country}${city.state}${index}`}
+								key={`${city.name}${city.country}${city.state}`}
 								onClick={(event) => handleClickListElement(event)}
 								data-id={city.id}
 								data-name={city.name}
@@ -75,3 +76,11 @@ const CitiesList = ({ className }) => {
 };
 
 export default CitiesList;
+
+CitiesList.propTypes = {
+	className: PropTypes.string,
+};
+
+CitiesList.defaultProps = {
+	className: '',
+};

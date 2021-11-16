@@ -23,7 +23,7 @@ const SearchView = () => {
 	return (
 		<StyledSection>
 			<Content>
-				<Heading>What's the place?</Heading>
+				<Heading>What&aposs the place?</Heading>
 				<SearchBar />
 			</Content>
 			<CitiesList />
