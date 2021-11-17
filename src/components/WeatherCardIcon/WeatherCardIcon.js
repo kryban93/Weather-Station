@@ -11,7 +11,6 @@ const StyledIconComponent = styled(IconComponent)`
 
 const WeatherCardIcon = ({ clouds }) => {
 	const { weatherCard: weatherIcons } = icons;
-	console.log(clouds);
 
 	const selectActualWeatherIcon = () => {
 		const actualHours = new Date().getHours();

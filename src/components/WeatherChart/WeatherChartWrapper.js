@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import WeatherChart from './WeatherChart';
@@ -24,28 +24,29 @@ const StyledButton = styled.button`
 
 const WeatherChartWrapper = ({ chartData, className }) => {
 	const [currentChartIndex, setCurrentChartIndex] = useState(0);
+	const [chartDataState, setChartDataState] = useState(
+		prepareChartData(chartData, 0),
+	);
 	const [isLeftNavButtonDisable, setLeftNavButtonDisableState] = useState(true);
 	const [isRightNavButtonDisable, setRightNavButtonDisableState] =
 		useState(false);
 	const chartDataKeys = prepareChartDataKeys(chartData);
-	let chartDataToDisplay = prepareChartData(chartData, 0);
+
 	useEffect(() => {
-		console.log(currentChartIndex);
-		chartDataToDisplay = prepareChartData(chartData, currentChartIndex);
+		setChartDataState(prepareChartData(chartData, currentChartIndex));
 	}, [currentChartIndex]);
 
 	const updateChartData = (e) => {
-		console.log(e.target.dataset.direction);
 		if (e.target.dataset.direction === 'left') {
 			setCurrentChartIndex(currentChartIndex - 1);
 		} else if (e.target.dataset.direction === 'right') {
 			setCurrentChartIndex(currentChartIndex + 1);
 		}
 
-		if (currentChartIndex === 1) {
+		if (currentChartIndex === 0) {
 			setLeftNavButtonDisableState(true);
 			setRightNavButtonDisableState(false);
-		} else if (currentChartIndex === chartDataKeys.length) {
+		} else if (currentChartIndex === chartDataKeys.length - 1) {
 			setRightNavButtonDisableState(true);
 			setLeftNavButtonDisableState(false);
 		} else {
@@ -54,11 +55,9 @@ const WeatherChartWrapper = ({ chartData, className }) => {
 		}
 	};
 
-	console.log(chartDataToDisplay);
-	console.log(chartDataKeys);
 	return (
 		<StyledWrapper className={className}>
-			<WeatherChart data={chartDataToDisplay} />
+			<WeatherChart data={chartDataState} />
 			<ChartNavigation>
 				<StyledButton
 					disabled={isLeftNavButtonDisable}
@@ -67,7 +66,7 @@ const WeatherChartWrapper = ({ chartData, className }) => {
 				>
 					left
 				</StyledButton>
-				<Paragraph>date</Paragraph>
+				<Paragraph>{currentChartIndex}</Paragraph>
 				<StyledButton
 					disabled={isRightNavButtonDisable}
 					data-direction="right"

@@ -114,7 +114,7 @@ export const prepareChartData = (chartData, currentIndex) => {
 	});
 
 	const chartDataToDisplay = [];
-	fullChartDataArray[2].forEach((chartArrayElement) => {
+	fullChartDataArray[currentIndex].forEach((chartArrayElement) => {
 		const chartHours = chartArrayElement.date.getHours();
 		chartDataToDisplay.push({
 			time: `${chartHours}:00`,

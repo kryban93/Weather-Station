@@ -16,7 +16,8 @@ export default Paragraph;
 
 Paragraph.propTypes = {
 	className: PropTypes.string,
-	children: PropTypes.string.isRequired,
+	children: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+		.isRequired,
 };
 
 Paragraph.defaultProps = {
