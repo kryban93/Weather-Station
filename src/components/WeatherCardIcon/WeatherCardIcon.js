@@ -37,5 +37,5 @@ const WeatherCardIcon = ({ clouds }) => {
 export default WeatherCardIcon;
 
 WeatherCardIcon.propTypes = {
-	clouds: PropTypes.string.isRequired,
+	clouds: PropTypes.number.isRequired,
 };

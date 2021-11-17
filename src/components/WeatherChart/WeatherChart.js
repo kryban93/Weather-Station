@@ -41,5 +41,5 @@ const WeatherChart = ({ data }) => {
 export default WeatherChart;
 
 WeatherChart.propTypes = {
-	data: PropTypes.shape({}).isRequired,
+	data: PropTypes.array.isRequired,
 };

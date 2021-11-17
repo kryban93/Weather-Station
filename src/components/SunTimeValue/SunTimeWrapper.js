@@ -8,7 +8,7 @@ export default SunTimeWrapper;
 
 SunTimeWrapper.propTypes = {
 	className: PropTypes.string,
-	children: PropTypes.element.isRequired,
+	children: PropTypes.array.isRequired,
 };
 
 SunTimeWrapper.defaultProps = {

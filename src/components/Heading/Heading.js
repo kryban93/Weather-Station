@@ -17,7 +17,7 @@ export default Heading;
 
 Heading.propTypes = {
 	className: PropTypes.string,
-	children: PropTypes.element.isRequired,
+	children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
 };
 
 Heading.defaultProps = {

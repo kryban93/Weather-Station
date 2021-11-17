@@ -16,7 +16,7 @@ export default Paragraph;
 
 Paragraph.propTypes = {
 	className: PropTypes.string,
-	children: PropTypes.element.isRequired,
+	children: PropTypes.string.isRequired,
 };
 
 Paragraph.defaultProps = {

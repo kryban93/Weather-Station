@@ -36,7 +36,7 @@ const SearchBar = () => {
 				onChange={(event) => setSearchValue(event.target.value)}
 			/>
 			<SearchButton>
-				<IconComponent src={icons.search_black} alt="search button" />
+				<IconComponent src={icons.searchBlack} alt="search button" />
 			</SearchButton>
 		</SearchBarWrapper>
 	);

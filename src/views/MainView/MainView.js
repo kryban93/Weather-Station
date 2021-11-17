@@ -30,7 +30,7 @@ const MainView = () => {
 				<Nav />
 				<StyledHeader>
 					<Heading>
-						{formattedWeatherData.name}, {formattedWeatherData.country}
+						{`${formattedWeatherData.name}, ${formattedWeatherData.country}`}
 					</Heading>
 				</StyledHeader>
 

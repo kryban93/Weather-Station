@@ -86,8 +86,8 @@ export default WeatherCard;
 
 WeatherCard.propTypes = {
 	weatherCardData: PropTypes.shape({
-		sunrise: PropTypes.string.isRequired,
-		sunset: PropTypes.string.isRequired,
+		sunrise: PropTypes.instanceOf(Date).isRequired,
+		sunset: PropTypes.instanceOf(Date).isRequired,
 		clouds: PropTypes.number.isRequired,
 		temp: PropTypes.shape({
 			value: PropTypes.number.isRequired,

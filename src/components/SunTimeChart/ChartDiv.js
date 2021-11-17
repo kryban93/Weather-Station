@@ -8,9 +8,10 @@ export default ChartDiv;
 
 ChartDiv.propTypes = {
 	className: PropTypes.string,
-	children: PropTypes.element.isRequired,
+	children: PropTypes.array,
 };
 
 ChartDiv.defaultProps = {
 	className: '',
+	children: [],
 };

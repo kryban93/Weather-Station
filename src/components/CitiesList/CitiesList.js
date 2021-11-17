@@ -60,7 +60,7 @@ const CitiesList = ({ className }) => {
 				{matchedCities
 					? matchedCities.map((city, index) => (
 							<ListElement
-								key={`${city.name}${city.country}${city.state}`}
+								key={`${city.name}${city.country}${city.state}${city.id}`}
 								onClick={(event) => handleClickListElement(event)}
 								data-id={city.id}
 								data-name={city.name}
