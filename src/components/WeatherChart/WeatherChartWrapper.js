@@ -33,7 +33,9 @@ const WeatherChartWrapper = ({ chartData, className }) => {
 	const chartDataKeys = prepareChartDataKeys(chartData);
 
 	useEffect(() => {
-		setChartDataState(prepareChartData(chartData, currentChartIndex));
+		if (currentChartIndex < chartDataKeys.length || currentChartIndex > 0) {
+			setChartDataState(prepareChartData(chartData, currentChartIndex));
+		}
 	}, [currentChartIndex]);
 
 	const updateChartData = (e) => {
@@ -55,6 +57,16 @@ const WeatherChartWrapper = ({ chartData, className }) => {
 		}
 	};
 
+	const createDateFromChartKeys = (key) => {
+		if (currentChartIndex < chartDataKeys.length || currentChartIndex > 0) {
+			const dateKey = key.replace('KEY', '');
+
+			console.log(chartDataKeys);
+			console.log(dateKey);
+			return dateKey;
+		}
+	};
+
 	return (
 		<StyledWrapper className={className}>
 			<WeatherChart data={chartDataState} />
@@ -66,7 +78,9 @@ const WeatherChartWrapper = ({ chartData, className }) => {
 				>
 					left
 				</StyledButton>
-				<Paragraph>{currentChartIndex}</Paragraph>
+				<Paragraph>
+					{createDateFromChartKeys(chartDataKeys[currentChartIndex])}
+				</Paragraph>
 				<StyledButton
 					disabled={isRightNavButtonDisable}
 					data-direction="right"
