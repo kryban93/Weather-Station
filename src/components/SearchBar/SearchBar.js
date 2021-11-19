@@ -5,7 +5,7 @@ import IconComponent from '../IconComponent/IconComponent';
 
 const SearchBarWrapper = styled.div`
 	display: flex;
-	width: 95%;
+	width: 60%;
 `;
 const Input = styled.input`
 	box-sizing: border-box;
